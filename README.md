@@ -1,1 +1,2 @@
-"# alien_invasion" 
+"# alien_invasion"
+Простая космическая стрелялка
