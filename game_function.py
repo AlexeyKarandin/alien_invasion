@@ -15,11 +15,7 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pyg.K_DOWN:
         ship.moving_down = True
     elif event.key == pyg.K_SPACE:
-        fire_bullet(ai_settings, screen, ship, bullets)
-
-def fire_bullet(ai_settings, screen, ship, bullets):
-    """fire"""
-    if len(bullets) < ai_settings.bullets_allowned:
+        # Создание пули и добавление ее в группу bullets
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
 
@@ -49,13 +45,6 @@ def check_events(ai_settings, screen, ship, bullets):
         elif event.type == pyg.KEYUP:
             check_keyup_events(event, ship)
 
-def update_bullets(bullets):
-    """Обновление позиции пули"""
-    bullets.update()
-    for bullet in bullets.copy():
-        if bullet.rect.bottom <= 0:
-            bullets.remove(bullet)
-
 
 def update_screen(ai_settings, screen, ship, bullets):
     """
@@ -67,9 +56,9 @@ def update_screen(ai_settings, screen, ship, bullets):
     """
     # При каждом проходе цикла прорисовывается экран
     screen.fill(ai_settings.bg_color)
-
+    # все пули выводятся позади изображения корабля и пришельцев
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
-
+    # Отображение последнего прорисованного экрана.
     pyg.display.flip()

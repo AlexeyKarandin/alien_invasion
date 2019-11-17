@@ -10,7 +10,7 @@ class Bullet(Sprite):
 
     def __init__(self, ai_settings, screen, ship):
         """Создаёт объект пули в текущей позиции корабля"""
-        super(Bullet, self).__init__()
+        super().__init__()
         self.screen = screen
         # Создание пули в позиции (0,0) и назначение правильной позиции.
         self.rect = pyg.Rect(0, 0, ai_settings.bullet_width,
@@ -30,6 +30,7 @@ class Bullet(Sprite):
         # обновление позиции прямоугольника
         self.rect.y = self.y
 
-    def draw_bullet(self):
-        """Вывод пули на экран"""
-        pyg.draw.rect(self.screen, self.color, self.rect)
+
+   def draw_bullet(self):
+       """Вывод пули на экран"""
+       pyg.draw.rect(self.screen, self.color, self.rect)

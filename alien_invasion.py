@@ -1,11 +1,11 @@
 # alien_invasion.py
 
 import pygame as pyg
-from pygame.sprite import Group
-
 import game_function as gf
 from settings import Settings
 from ship import Ship
+from pygame.sprite import Group
+
 
 def run_game():
     # инициализирует игру и создает объект экрана
@@ -24,7 +24,7 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
         # Обновление корабля и пуль
         ship.update()
-        gf.update_bullets(bullets)
+        bullets.update()
         # обновление экрана
         gf.update_screen(ai_settings, screen, ship, bullets)
 
